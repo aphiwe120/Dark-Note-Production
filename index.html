@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="logo"><img src="images/logo.jg" alt="Logo"></div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="index.html" class="active">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="events.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>Welcome to DNP Events Home of quality services</h1>
+        <p>Your tagline or value proposition goes here.</p>
+    <a href="services.html" class="cta-btn">Get Started</a>
+    </header>
+    <!-- Main Content -->
+    <main>
+        <section>
+            <h2>Our Services</h2>
+            <p>At DNP Events we offer services tailored to your event be it a wedding,Party,funeral or conference. we have got you covered with top quality Sound,Stage,Generator,Audio visuals and a team that is dedicated to customer Satisfaction. </p>
+        </section>
+        <section>
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>Quality Service</li>
+                <li>Experienced Team</li>
+                <li>Customer Satisfaction</li>
+            </ul>
+        </section>
+    </main>
+     <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 DNP Events. All rights reserved.</p>
+    </footer>
+</body>
+    <script src="script.js"></script>
+    <script>
+    // Collapse navigation for mobile
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+    });
+    </script>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Services - DNP Events</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><img src="images/logo.jpg" alt="Logo"></div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html" class="active">Services</a></li>
+            <li><a href="events.html">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <h1>Our Services</h1>
+        <p>Discover what DNP Events can do for your event.</p>
+    </header>
+    <main>
+        <section>
+            <h2>Event Solutions</h2>
+            <div class="services-list-container">
+                <ul class="services-list">
+                    <li data-img="images/sound.jpg">Sound System Rental</li>
+                    <li data-img="images/full Setup.jpg">Stage Setup</li>
+                    <li data-img="images/generator.jpg">Generator Hire</li>
+                    <li data-img="images/Audio visual3.jpg">Audio Visual Equipment</li>
+                    <li data-img="images/lighting.jpg">Lighting Solutions</li>
+                    <li data-img="images/team.jpg">Professional Event Team</li>
+                </ul>
+                <div class="service-image-popup" id="serviceImagePopup" style="display:none;">
+                    <img src="" alt="Service Image" id="popupImg" />
+                </div>
+            </div>
+        </section>
+        <section>
+            <h2>Why Choose Us?</h2>
+            <ul>
+                <li>Top Quality Equipment</li>
+                <li>Experienced Staff</li>
+                <li>Customer Satisfaction Guaranteed</li>
+            </ul>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 DNP Events. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+    // Collapse navigation for mobile
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+    });
+    </script>
+    <script>
+    // Service image popup logic (relative to hovered li)
+    const services = document.querySelectorAll('.services-list li');
+    const popup = document.getElementById('serviceImagePopup');
+    const popupImg = document.getElementById('popupImg');
+
+    services.forEach(item => {
+        item.addEventListener('mouseenter', (e) => {
+            const imgSrc = item.getAttribute('data-img');
+            popupImg.src = imgSrc;
+            popup.style.display = 'block';
+            // Position popup relative to the hovered li
+            const liRect = item.getBoundingClientRect();
+            const containerRect = item.parentElement.getBoundingClientRect();
+            popup.style.position = 'absolute';
+            popup.style.top = (item.offsetTop - 10) + 'px';
+            popup.style.left = (item.offsetLeft + item.offsetWidth + 24) + 'px';
+        });
+        item.addEventListener('mouseleave', () => {
+            popup.style.display = 'none';
+        });
+    });
+    </script>
+</body>
+</html>

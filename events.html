@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Work & Events - Dark Note Production</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <nav>
+        <div class="logo"><img src="images/logo.jpg" alt="Logo"></div>
+        <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        <ul id="navMenu">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="services.html">Services</a></li>
+            <li><a href="events.html" class="active">Our Work</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+    <header class="hero">
+        <h1>Past Work & Events</h1>
+        <p>See some of the events and projects powered by DNP Events.</p>
+        <a href="services.html" class="cta-btn">Get Started</a>
+    </header>
+    <main>
+        <section>
+            <h2>Gallery</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/Sound,AUDIOvisual,Stage.jpg" alt="Event 1">
+                    <p>IFP Rally</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Audio visual3.jpg" alt="Event 2">
+                    <p>Music Festival</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/event2.jpg" alt="Event 3">
+                    <p>Wedding Reception</p>
+                </div>
+                <!-- Add more gallery items as needed -->
+            </div>
+        </section>
+        <section>
+            <h2>Client Testimonials</h2>
+            <blockquote>
+                "DNP Events made our Rally unforgettable!"<br>
+                <span>- Event Organizer</span>
+            </blockquote>
+            <blockquote>
+                "Professional team and top-notch equipment. Highly recommended!"<br>
+                <span>- Festival Director</span>
+            </blockquote>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2025 DNP Event. All rights reserved.</p>
+    </footer>
+    <script src="script.js"></script>
+    <script>
+    // Collapse navigation for mobile
+    const navToggle = document.getElementById('navToggle');
+    const navMenu = document.getElementById('navMenu');
+    navToggle.addEventListener('click', () => {
+        navMenu.classList.toggle('open');
+        navToggle.classList.toggle('open');
+    });
+    </script>
+</body>
+</html>
