@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DNP Events | Home</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Navigation Bar -->
     <nav>
         <div class="logo"><img src="images/logo.jpg" alt="Logo"></div>
         <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
@@ -15,47 +15,114 @@
             <span></span>
         </button>
         <ul id="navMenu">
-            <li><a href="index.html" class="active">Home</a></li>
-            <li><a href="about.html">About</a></li>
-            <li><a href="services.html">Services</a></li>
-            <li><a href="events.html">Our Work</a></li>
-            <li><a href="contact.html">Contact</a></li>
+            <li><a href="#home" class="active">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#events">Our Work</a></li>
+            <li><a href="#contact">Contact</a></li>
         </ul>
     </nav>
-    <!-- Hero Section -->
-    <header class="hero">
+
+    <header class="hero" id="home">
         <h1>Welcome to DNP Events Home of quality services</h1>
-        <p>Your tagline or value proposition goes here.</p>
-    <a href="services.html" class="cta-btn">Get Started</a>
+        <p>Your one-stop partner for sound, stage, power, and AV that keep your event moving.</p>
+        <a href="#services" class="cta-btn">Explore Services</a>
     </header>
-    <!-- Main Content -->
+
     <main>
-        <section>
-            <h2>Our Services</h2>
-            <p>At DNP Events we offer services tailored to your event be it a wedding,Party,funeral or conference. we have got you covered with top quality Sound,Stage,Generator,Audio visuals and a team that is dedicated to customer Satisfaction. </p>
+        <section id="about">
+            <h2>About DNP Events</h2>
+            <p>DNP Events was founded with a passion for delivering unforgettable experiences. With years of expertise in sound, stage, lighting, and event management, we have become a trusted partner for events of all sizes.</p>
+            <p>Our mission is to provide top-quality event solutions and exceptional customer service, ensuring every event is a success.</p>
         </section>
-        <section>
-            <h2>Why Choose Us?</h2>
-            <ul>
-                <li>Quality Service</li>
-                <li>Experienced Team</li>
-                <li>Customer Satisfaction</li>
-            </ul>
+
+        <section id="services">
+            <h2>Event Solutions</h2>
+            <p>At DNP Events we offer services tailored to your event—whether it is a wedding, party, funeral, or conference. We have you covered with top-quality equipment and a team dedicated to customer satisfaction.</p>
+            <div class="services-list-container">
+                <ul class="services-list">
+                    <li data-img="images/sound.jpg">Sound System Rental</li>
+                    <li data-img="images/full Setup.jpg">Stage Setup</li>
+                    <li data-img="images/generator.jpg">Generator Hire</li>
+                    <li data-img="images/Audio visual3.jpg">Audio Visual Equipment</li>
+                    <li data-img="images/lighting.jpg">Lighting Solutions</li>
+                    <li data-img="images/team.jpg">Professional Event Team</li>
+                </ul>
+                <div class="service-image-popup" id="serviceImagePopup" style="display:none;">
+                    <img src="" alt="Service preview" id="popupImg">
+                </div>
+            </div>
+            <div class="split">
+                <div>
+                    <h2>Why Choose Us?</h2>
+                    <ul>
+                        <li>Top quality equipment</li>
+                        <li>Experienced staff</li>
+                        <li>Customer satisfaction guaranteed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="events">
+            <h2>Our Work</h2>
+            <div class="gallery">
+                <div class="gallery-item">
+                    <img src="images/Sound,AUDIOvisual,Stage.jpg" alt="IFP Rally setup">
+                    <p>IFP Rally</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/Audio visual3.jpg" alt="Festival stage">
+                    <p>Music Festival</p>
+                </div>
+                <div class="gallery-item">
+                    <img src="images/event2.jpg" alt="Wedding reception">
+                    <p>Wedding Reception</p>
+                </div>
+            </div>
+            <div class="testimonials">
+                <h3>Client Testimonials</h3>
+                <blockquote>
+                    "DNP Events made our Rally unforgettable!"<br>
+                    <span>- Event Organizer</span>
+                </blockquote>
+                <blockquote>
+                    "Professional team and top-notch equipment. Highly recommended!"<br>
+                    <span>- Festival Director</span>
+                </blockquote>
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <h3>Reach Out</h3>
+                    <ul>
+                        <li>Email: <a href="mailto:darknoteproductions@gmail.com">darknoteproductions@gmail.com</a></li>
+                        <li>Phone: <a href="tel:+27714458685">+27 714 458 685</a></li>
+                        <li>Address: Durban, 4001, South Africa</li>
+                    </ul>
+                </div>
+                <div class="contact-card">
+                    <h3>Send Us a Message</h3>
+                    <form class="contact-form">
+                        <label for="name">Name</label>
+                        <input type="text" id="name" name="name" required>
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" required>
+                        <label for="message">Message</label>
+                        <textarea id="message" name="message" rows="5" required></textarea>
+                        <button type="submit" class="cta-btn">Send Message</button>
+                    </form>
+                </div>
+            </div>
         </section>
     </main>
-     <!-- Footer -->
+
     <footer>
         <p>&copy; 2025 DNP Events. All rights reserved.</p>
     </footer>
-</body>
     <script src="script.js"></script>
-    <script>
-    // Collapse navigation for mobile
-    const navToggle = document.getElementById('navToggle');
-    const navMenu = document.getElementById('navMenu');
-    navToggle.addEventListener('click', () => {
-        navMenu.classList.toggle('open');
-        navToggle.classList.toggle('open');
-    });
-    </script>
+</body>
 </html>
