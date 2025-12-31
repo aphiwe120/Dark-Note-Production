@@ -182,6 +182,13 @@ body {
     from { transform: translateY(0) scale(1); }
     to { transform: translateY(-10px) scale(1.03); }
 }
+.hero-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
 .cta-btn {
     display: inline-block;
     background: #00bfff;
@@ -197,6 +204,24 @@ body {
 .cta-btn:hover {
     background: #009acd;
     color: #fff;
+    transform: scale(1.07);
+    text-decoration: none;
+}
+.cta-btn-outline {
+    display: inline-block;
+    background: transparent;
+    color: #00bfff;
+    padding: 0.75rem 2rem;
+    border-radius: 25px;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 1.1rem;
+    border: 2px solid #00bfff;
+    transition: color 0.3s, border-color 0.3s, transform 0.2s;
+}
+.cta-btn-outline:hover {
+    color: #fff;
+    border-color: #fff;
     transform: scale(1.07);
     text-decoration: none;
 }
