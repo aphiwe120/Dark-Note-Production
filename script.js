@@ -1,25 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    const services = document.querySelectorAll('.services-list li[data-img]');
-    const popup = document.getElementById('serviceImagePopup');
-    const popupImg = document.getElementById('popupImg');
-
-    if (services.length && popup && popupImg) {
-        const hidePopup = () => {
-            popup.style.display = 'none';
-        };
-
-        services.forEach(item => {
-            item.addEventListener('mouseenter', () => {
-                const imgSrc = item.getAttribute('data-img');
-                popupImg.src = imgSrc || '';
-                popup.style.display = 'block';
-                popup.style.top = `${item.offsetTop - 10}px`;
-                popup.style.left = `${item.offsetLeft + item.offsetWidth + 24}px`;
-            });
-            item.addEventListener('mouseleave', hidePopup);
-        });
-    }
-
     const galleryEl = document.getElementById('gallery');
     const galleryStatusEl = document.getElementById('galleryStatus');
 
