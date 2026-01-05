@@ -11,7 +11,7 @@ module.exports = async function handler(req, res) {
   const auth = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
 
   try {
-    const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image?type=upload&prefix=${folder}/&max_results=30`;
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image?type=upload&max_results=50`;
     const response = await fetch(url, {
       method: 'GET',
       headers: {
@@ -25,14 +25,17 @@ module.exports = async function handler(req, res) {
     }
 
     const payload = await response.json();
-    const images = (payload.resources || []).map(r => ({
-      url: r.secure_url,
-      public_id: r.public_id,
-      format: r.format,
-      width: r.width,
-      height: r.height,
-      created_at: r.created_at,
-    }));
+    // Filter by folder prefix on the response
+    const images = (payload.resources || [])
+      .filter(r => r.public_id.startsWith(folder + '/') || folder === '')
+      .map(r => ({
+        url: r.secure_url,
+        public_id: r.public_id,
+        format: r.format,
+        width: r.width,
+        height: r.height,
+        created_at: r.created_at,
+      }));
 
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
     return res.status(200).json({ images });
