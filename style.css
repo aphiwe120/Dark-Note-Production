@@ -24,9 +24,17 @@ html {
     .gallery {
         grid-template-columns: 1fr;
         gap: 1rem;
+        padding: 0;
+        max-width: 100%;
+    }
+    .gallery-item {
+        border-radius: 8px;
     }
     .gallery-item img {
-        height: 200px;
+        height: 220px;
+    }
+    section {
+        padding: 1.5rem 1rem;
     }
     .gallery {
         flex-direction: column;

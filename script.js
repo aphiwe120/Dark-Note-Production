@@ -1,6 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
     const galleryEl = document.getElementById('gallery');
-    const galleryStatusEl = document.getElementById('galleryStatus');
 
     const renderGallery = images => {
         if (!galleryEl) return;
@@ -36,14 +35,11 @@ document.addEventListener('DOMContentLoaded', () => {
             const data = await res.json();
             if (Array.isArray(data.images) && data.images.length) {
                 renderGallery(data.images);
-                if (galleryStatusEl) galleryStatusEl.textContent = 'Latest uploads';
                 return;
             }
             renderGallery(fallbackImages);
-            if (galleryStatusEl) galleryStatusEl.textContent = 'No uploads yet — showing samples';
         } catch (err) {
             renderGallery(fallbackImages);
-            if (galleryStatusEl) galleryStatusEl.textContent = '';
         }
     };
 
