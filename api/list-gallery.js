@@ -8,26 +8,20 @@ module.exports = async function handler(req, res) {
     return res.status(500).json({ error: 'Cloudinary environment variables are missing.' });
   }
 
-  const expression = `folder:${folder}`;
   const auth = Buffer.from(`${apiKey}:${apiSecret}`).toString('base64');
 
   try {
-    const response = await fetch(`https://api.cloudinary.com/v1_1/${cloudName}/resources/search`, {
-      method: 'POST',
+    const url = `https://api.cloudinary.com/v1_1/${cloudName}/resources/image?type=upload&prefix=${folder}/&max_results=30`;
+    const response = await fetch(url, {
+      method: 'GET',
       headers: {
         Authorization: `Basic ${auth}`,
-        'Content-Type': 'application/json',
       },
-      body: JSON.stringify({
-        expression,
-        sort_by: [{ public_id: 'desc' }],
-        max_results: 30,
-      }),
     });
 
     if (!response.ok) {
       const text = await response.text();
-      return res.status(502).json({ error: 'Cloudinary search failed', detail: text });
+      return res.status(502).json({ error: 'Cloudinary API failed', detail: text, status: response.status });
     }
 
     const payload = await response.json();
