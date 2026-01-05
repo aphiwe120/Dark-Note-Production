@@ -2,7 +2,8 @@ module.exports = async function handler(req, res) {
   const cloudName = process.env.CLOUDINARY_CLOUD_NAME;
   const apiKey = process.env.CLOUDINARY_API_KEY;
   const apiSecret = process.env.CLOUDINARY_API_SECRET;
-  const folder = process.env.CLOUDINARY_FOLDER || 'gallery';
+  // Only use folder if explicitly set; empty string = get all images
+  const folder = process.env.CLOUDINARY_FOLDER ?? null;
 
   if (!cloudName || !apiKey || !apiSecret) {
     return res.status(500).json({ error: 'Cloudinary environment variables are missing.' });
