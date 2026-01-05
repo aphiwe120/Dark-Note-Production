@@ -44,15 +44,10 @@ module.exports = async function handler(req, res) {
       created_at: r.created_at,
     }));
 
-    const filtered = allImages.filter(r => r.public_id.startsWith(folder + '/'));
+    const filtered = allImages.filter(r => !folder || r.public_id.startsWith(folder + '/'));
     
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
-    return res.status(200).json({ 
-      images: filtered,
-      total: allImages.length,
-      folder,
-      samplePublicIds: allImages.slice(0, 3).map(i => i.public_id)
-    });
+    return res.status(200).json({ images: filtered });
   } catch (err) {
     return res.status(500).json({ error: 'Unexpected error', detail: err.message });
   }
