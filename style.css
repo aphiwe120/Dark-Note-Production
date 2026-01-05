@@ -26,19 +26,16 @@ html {
         height: 220px;
     }
     section {
-        padding: 1.5rem 1rem;
+        padding: 1.5rem 0;
     }
-    .gallery {
-        flex-direction: column;
-        align-items: center;
+    section h2 {
+        padding: 0 1rem;
     }
-    .gallery-item {
-        width: 90vw;
-        min-width: 120px;
-        max-width: 340px;
+    section p {
+        padding: 0 1rem;
     }
-    section {
-        padding: 1rem 0.5rem;
+    .testimonials {
+        padding: 0 1rem;
     }
 }
 /* Gallery styles */
