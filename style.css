@@ -7,22 +7,14 @@ html {
         max-width: 100%;
         padding: 0 0.5rem;
     }
-    .gallery {
-        gap: 1rem;
-    }
-    .gallery-item {
-        width: 45vw;
-        min-width: 160px;
-        max-width: 260px;
-    }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 768px) {
     .hero {
         padding: 2rem 0.5rem 1rem 0.5rem;
     }
     .gallery {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr !important;
         gap: 1rem;
         padding: 0;
         max-width: 100%;
