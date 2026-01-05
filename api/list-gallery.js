@@ -25,20 +25,34 @@ module.exports = async function handler(req, res) {
     }
 
     const payload = await response.json();
-    // Filter by folder prefix on the response
-    const images = (payload.resources || [])
-      .filter(r => r.public_id.startsWith(folder + '/') || folder === '')
-      .map(r => ({
-        url: r.secure_url,
-        public_id: r.public_id,
-        format: r.format,
-        width: r.width,
-        height: r.height,
-        created_at: r.created_at,
-      }));
+    
+    // Debug: show what we got
+    if (!payload.resources || payload.resources.length === 0) {
+      return res.status(200).json({ 
+        debug: 'No resources returned from Cloudinary',
+        rawPayload: payload 
+      });
+    }
 
+    // Filter by folder prefix on the response
+    const allImages = payload.resources.map(r => ({
+      url: r.secure_url,
+      public_id: r.public_id,
+      format: r.format,
+      width: r.width,
+      height: r.height,
+      created_at: r.created_at,
+    }));
+
+    const filtered = allImages.filter(r => r.public_id.startsWith(folder + '/'));
+    
     res.setHeader('Cache-Control', 's-maxage=60, stale-while-revalidate=300');
-    return res.status(200).json({ images });
+    return res.status(200).json({ 
+      images: filtered,
+      total: allImages.length,
+      folder,
+      samplePublicIds: allImages.slice(0, 3).map(i => i.public_id)
+    });
   } catch (err) {
     return res.status(500).json({ error: 'Unexpected error', detail: err.message });
   }
