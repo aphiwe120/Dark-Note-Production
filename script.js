@@ -6,6 +6,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
     let currentIndex = 0;
     let allImages = [];
+    let autoPlayInterval = null;
+
+    const startAutoPlay = () => {
+        stopAutoPlay();
+        autoPlayInterval = setInterval(nextSlide, 2500);
+    };
+
+    const stopAutoPlay = () => {
+        if (autoPlayInterval) {
+            clearInterval(autoPlayInterval);
+            autoPlayInterval = null;
+        }
+    };
 
     const renderGallery = images => {
         if (!galleryEl) return;
@@ -30,6 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         renderDots();
+        startAutoPlay();
     };
 
     const renderDots = () => {
@@ -55,15 +69,23 @@ document.addEventListener('DOMContentLoaded', () => {
     const nextSlide = () => {
         const nextIndex = (currentIndex + 1) % allImages.length;
         showSlide(nextIndex);
+        startAutoPlay();
     };
 
     const prevSlide = () => {
         const prevIndex = (currentIndex - 1 + allImages.length) % allImages.length;
         showSlide(prevIndex);
+        startAutoPlay();
     };
 
     if (prevBtn) prevBtn.addEventListener('click', prevSlide);
     if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+    // Pause autoplay on hover, resume on leave
+    if (galleryEl) {
+        galleryEl.parentElement?.addEventListener('mouseenter', stopAutoPlay);
+        galleryEl.parentElement?.addEventListener('mouseleave', startAutoPlay);
+    }
 
     const fallbackImages = [
         { url: 'images/Sound,AUDIOvisual,Stage.jpg', public_id: 'IFP Rally', caption: 'IFP Rally' },
